@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using StupidPrincess.Game.Input;
-using StupidPrincess.Game.Maze;
+using StupidPrincess.Game.MainGame;
 using StupidPrincess.Game.MenuComponents;
 using StupidPrincess.Renderables;
 

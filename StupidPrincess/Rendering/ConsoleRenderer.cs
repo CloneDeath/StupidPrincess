@@ -32,6 +32,10 @@ namespace StupidPrincess.Rendering
             foreach (var glyph in delta) {
                 Console.SetCursorPosition(glyph.Key.X, glyph.Key.Y);
                 var toRender = glyph.Value?.Character ?? ' ';
+                var forgroundColor = glyph.Value?.ForegroundColor ?? ConsoleColor.Gray;
+                var backgroundColor = glyph.Value?.BackgroundColor ?? ConsoleColor.Black;
+                Console.ForegroundColor = forgroundColor;
+                Console.BackgroundColor = backgroundColor;
                 Console.Write(toRender);
             }
         }
@@ -40,14 +44,17 @@ namespace StupidPrincess.Rendering
             foreach (var child in target.Children) {
                 RenderTargetAndChildren(child, screen);
             }
-            RenderToConsole(target, screen);
+            RenderToScreen(target, screen);
         }
 
-        private void RenderToConsole(IRenderable target, Screen screen) {
+        private static void RenderToScreen(IRenderable target, Screen screen) {
             if (string.IsNullOrEmpty(target.RenderedText)) return;
 
             for (var i = 0; i < target.RenderedText.Length; i++) {
-                screen.Set(target.RenderPosition + new Position(i, 0), new Glyph(target.RenderedText[i]));
+                screen.Set(target.RenderPosition + new Position(i, 0), 
+                    new Glyph(target.RenderedText[i],
+                              target.RenderedColor,
+                              target.BackgroundColor));
             }
         }
     }

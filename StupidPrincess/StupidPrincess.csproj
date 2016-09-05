@@ -45,8 +45,17 @@
     <Compile Include="Game\GameState.cs" />
     <Compile Include="Game\Input\Controls.cs" />
     <Compile Include="Game\ISubstate.cs" />
+    <Compile Include="Game\MainGame\MazeLoader.cs" />
     <Compile Include="Game\MainMenuState.cs" />
-    <Compile Include="Game\Maze\Level01.cs" />
+    <Compile Include="Game\MainGame\Entities\Door.cs" />
+    <Compile Include="Game\MainGame\Entities\IEntity.cs" />
+    <Compile Include="Game\MainGame\Entities\Key.cs" />
+    <Compile Include="Game\MainGame\Entities\Orc.cs" />
+    <Compile Include="Game\MainGame\Entities\Princess.cs" />
+    <Compile Include="Game\MainGame\Entities\StaticEntity.cs" />
+    <Compile Include="Game\MainGame\Entities\Wall.cs" />
+    <Compile Include="Game\MainGame\Level01.cs" />
+    <Compile Include="Game\MainGame\Maze.cs" />
     <Compile Include="Game\MenuComponents\TextComponent.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -60,6 +69,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Game\MainGame\level01.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
