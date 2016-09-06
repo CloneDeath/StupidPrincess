@@ -1,4 +1,5 @@
-﻿using StupidPrincess.Renderables;
+﻿using System;
+using StupidPrincess.Renderables;
 
 namespace StupidPrincess.Game.MainGame.Entities
 {
@@ -6,5 +7,6 @@ namespace StupidPrincess.Game.MainGame.Entities
     {
         public Key(Position position) : base(position) {}
         public override string RenderedText => "K";
+        public override ConsoleColor RenderedColor => ConsoleColor.Red;
     }
 }

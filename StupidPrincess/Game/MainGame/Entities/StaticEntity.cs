@@ -11,8 +11,8 @@ namespace StupidPrincess.Game.MainGame.Entities
         }
 
         public abstract string RenderedText { get; }
-        public ConsoleColor RenderedColor => ConsoleColor.Gray;
-        public ConsoleColor BackgroundColor => ConsoleColor.Black;
+        public virtual ConsoleColor RenderedColor => ConsoleColor.Gray;
+        public virtual ConsoleColor BackgroundColor => ConsoleColor.Black;
         public Position RenderPosition { get; }
         public IEnumerable<IRenderable> Children => new IRenderable[0];
 
