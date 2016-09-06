@@ -2,8 +2,8 @@
 {
     public class Rectangle
     {
-        private Position _position;
-        private Size _size;
+        private readonly Position _position;
+        private readonly Size _size;
 
         public Rectangle(Position position, Size size) {
             _size = size;

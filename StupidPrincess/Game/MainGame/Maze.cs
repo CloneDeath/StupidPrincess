@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using StupidPrincess.Game.MainGame.Entities;
 using StupidPrincess.Renderables;
 
@@ -7,7 +8,7 @@ namespace StupidPrincess.Game.MainGame
 {
     public class Maze : Renderable
     {
-        private Size _size;
+        private readonly Size _size;
         private readonly List<IEntity> _entities = new List<IEntity>(); 
 
         public Maze(Size size) {
@@ -25,6 +26,16 @@ namespace StupidPrincess.Game.MainGame
             foreach (var entity in _entities) {
                 entity.Update(deltaTime);
             }
+        }
+        
+        public bool IsValidAndUnoccupied(Position newPosition)
+        {
+            return Bounds.Contains(newPosition) && !PlaceIsOccupied(newPosition);
+        }
+
+        public bool PlaceIsOccupied(Position position)
+        {
+            return Children.Any(c => c.RenderPosition == position);
         }
     }
 }

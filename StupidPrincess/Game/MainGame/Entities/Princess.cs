@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using StupidPrincess.Renderables;
 
 namespace StupidPrincess.Game.MainGame.Entities
 {
     public class Princess : IEntity
     {
+        private Position _previousPosition;
         private Position _position;
         private readonly Maze _maze;
 
         public Princess(Position startingPosition, Maze maze) {
+            _previousPosition = startingPosition;
             _position = startingPosition;
             _maze = maze;
         }
@@ -23,113 +24,28 @@ namespace StupidPrincess.Game.MainGame.Entities
         public IEnumerable<IRenderable> Children => new IRenderable[0];
 
         private TimeSpan _timeUntilUpdate = TimeSpan.Zero;
-        private static readonly TimeSpan UpdatePeriod = TimeSpan.FromSeconds(.25);
+        private static readonly TimeSpan _updatePeriod = TimeSpan.FromSeconds(.25);
+
         public void Update(TimeSpan deltaTime) {
             _timeUntilUpdate -= deltaTime;
             if (_timeUntilUpdate.TotalSeconds > 0) return;
-            _timeUntilUpdate = UpdatePeriod;
+            _timeUntilUpdate = _updatePeriod;
 
-            DoUpdate();
+            MovePrincess();
         }
 
-        private void DoUpdate()
+        private void MovePrincess()
         {
-            var pastPosition = _position;
-
-            var newPosition = GetNewPosition(pastPosition);
-            if (_maze.Bounds.Contains(newPosition) && !PlaceIsOccupied(newPosition)) {
+            var newPosition = GetNewPosition();
+            if (_maze.IsValidAndUnoccupied(newPosition)) {
+                _previousPosition = _position;
                 _position = newPosition;
             }
         }
 
-        private bool PlaceIsOccupied(Position newPosition) {
-            return _maze.Children.Any(c => c.RenderPosition == newPosition);
+        private Position GetNewPosition() {
+            var brain = new PrincessBrain(_previousPosition, _position, _maze);
+            return brain.GetNextPosition();
         }
-
-        private string GetDirection(Position pastPosition)
-        {
-            if (pastPosition == _position) return "start";
-            else if (pastPosition.X < _position.X && pastPosition.Y == _position.Y)
-            {
-                return "right";
-            }
-            else if (pastPosition.X > _position.X && pastPosition.Y == _position.Y)
-            {
-                return "left";
-            }
-            else if (pastPosition.Y < _position.Y && pastPosition.X == _position.X)
-            {
-                return "up";
-            }
-            else
-            {
-                return "down";
-            }
-        }
-
-        private Position MoveDown()
-        {
-            return new Position(_position.X, _position.Y - 1);
-        }
-        private Position MoveUp()
-        {
-            return new Position(_position.X, _position.Y + 1);
-        }
-        private Position MoveLeft()
-        {
-            return new Position(_position.X - 1, _position.Y);
-        }
-        private Position MoveRight()
-        {
-            return new Position(_position.X + 1, _position.Y);
-        }
-        private Position GetNewPosition(Position pastPosition)
-        {
-            if (GetDirection(pastPosition).Equals("start") || GetDirection(pastPosition).Equals("right"))
-            {
-                return MoveRight();
-            }
-            else if (GetDirection(pastPosition).Equals("left"))
-            {
-                return MoveLeft();
-            }
-            else if (GetDirection(pastPosition).Equals("up"))
-            {
-               return MoveUp();
-            }
-            else
-            {
-                return MoveDown();
-            }
-        }
-
-        private int NumberOfDecisions(Position pastPosition)
-        {
-            if (GetDirection(pastPosition).Equals("left") && PlaceIsOccupied(MoveUp()) && PlaceIsOccupied(MoveDown()) && !PlaceIsOccupied(MoveRight()))
-            {
-                return 1;
-            }
-            else if (GetDirection(pastPosition).Equals("right") && PlaceIsOccupied(MoveUp()) && PlaceIsOccupied(MoveDown()) && !PlaceIsOccupied(MoveLeft()))
-            {
-                return 1;
-            }
-            else if (GetDirection(pastPosition).Equals("up") && PlaceIsOccupied(MoveLeft()) && PlaceIsOccupied(MoveRight()) && !PlaceIsOccupied(MoveDown()))
-            {
-                return 1;
-            }
-            else if (GetDirection(pastPosition).Equals("down") && PlaceIsOccupied(MoveLeft()) && PlaceIsOccupied(MoveRight()) && !PlaceIsOccupied(MoveUp()))
-            {
-                return 1;
-            }
-            else
-            {
-                
-            }
-        }
-        private Position MakeDecison(Position pastPosition)
-        {
-            
-        }
-
     }
 }

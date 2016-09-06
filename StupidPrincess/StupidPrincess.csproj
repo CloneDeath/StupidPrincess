@@ -48,6 +48,7 @@
     <Compile Include="Game\Input\Controls.cs" />
     <Compile Include="Game\ISubstate.cs" />
     <Compile Include="Game\MainGame\Entities\LockColors.cs" />
+    <Compile Include="Game\MainGame\Entities\PrincessBrain.cs" />
     <Compile Include="Game\MainGame\MazeLoading\EntityLegend.cs" />
     <Compile Include="Game\MainGame\MazeLoading\FileStack.cs" />
     <Compile Include="Game\MainGame\MazeLoading\MazeLoader.cs" />
