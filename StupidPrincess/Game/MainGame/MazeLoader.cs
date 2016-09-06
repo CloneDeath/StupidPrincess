@@ -21,19 +21,19 @@ namespace StupidPrincess.Game.MainGame
             for (var y = 0; y < fileLines.Length; y++) {
                 for (var x = 0; x < fileLines[y].Length; x++) {
                     var symbol = fileLines[y][x];
-                    var entity = GetEntity(new Position(x, y), symbol);
+                    var entity = GetEntity(new Position(x, y), symbol, maze);
                     if (entity == null) continue;
                     maze.AddEntity(entity);
                 }
             }
         }
 
-        private static IEntity GetEntity(Position position, char symbol) {
+        private static IEntity GetEntity(Position position, char symbol, Maze maze) {
             switch (symbol) {
                 case '#':
                     return new Wall(position);
                 case 'P':
-                    return new Princess(position);
+                    return new Princess(position, maze);
                 case 'O':
                     return new Orc(position);
                 case 'K':

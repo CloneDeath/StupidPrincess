@@ -19,6 +19,7 @@ namespace StupidPrincess.Game.MainGame
         }
 
         public override IEnumerable<IRenderable> Children => _entities;
+        public Rectangle Bounds => new Rectangle(new Position(0, 0), _size);
 
         public void Update(TimeSpan deltaTime) {
             foreach (var entity in _entities) {
