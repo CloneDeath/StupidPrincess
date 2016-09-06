@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using StupidPrincess.Game.MainGame.MazeLoading;
 using StupidPrincess.Renderables;
 
 namespace StupidPrincess.Game.MainGame
