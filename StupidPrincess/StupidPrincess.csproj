@@ -47,7 +47,10 @@
     <Compile Include="Game\GameState.cs" />
     <Compile Include="Game\Input\Controls.cs" />
     <Compile Include="Game\ISubstate.cs" />
-    <Compile Include="Game\MainGame\MazeLoader.cs" />
+    <Compile Include="Game\MainGame\Entities\LockColors.cs" />
+    <Compile Include="Game\MainGame\MazeLoading\EntityLegend.cs" />
+    <Compile Include="Game\MainGame\MazeLoading\FileStack.cs" />
+    <Compile Include="Game\MainGame\MazeLoading\MazeLoader.cs" />
     <Compile Include="Renderables\Rectangle.cs" />
     <Compile Include="Game\MainMenuState.cs" />
     <Compile Include="Game\MainGame\Entities\Door.cs" />

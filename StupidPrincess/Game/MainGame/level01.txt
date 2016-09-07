@@ -1,3 +1,9 @@
+# = Wall
+P = Princess
+K = Blue Key
+O = Orc
+D = Red Door
+BEGIN
 ###########
 #P      # #
 ####### # #

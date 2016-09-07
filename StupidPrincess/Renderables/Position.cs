@@ -13,6 +13,10 @@
             return new Position(left.X + right.X, left.Y + right.Y);
         }
 
+        public override string ToString() {
+            return $"({X}, {Y})";
+        }
+
         #region Equals
 
         public static bool operator ==(Position left, Position right) {
