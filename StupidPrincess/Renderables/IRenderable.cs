@@ -9,6 +9,7 @@ namespace StupidPrincess.Renderables
         ConsoleColor RenderedColor { get; }
         ConsoleColor BackgroundColor { get; }
         Position RenderPosition { get; }
+        bool solid { get; }
 
         IEnumerable<IRenderable> Children { get; } 
     }
@@ -21,5 +22,7 @@ namespace StupidPrincess.Renderables
 
         public virtual ConsoleColor RenderedColor => ConsoleColor.Gray;
         public virtual ConsoleColor BackgroundColor => ConsoleColor.Black;
+
+        public virtual bool solid => true;
     }
 }

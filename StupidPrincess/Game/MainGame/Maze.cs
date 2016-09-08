@@ -30,12 +30,12 @@ namespace StupidPrincess.Game.MainGame
         
         public bool IsValidAndUnoccupied(Position newPosition)
         {
-            return Bounds.Contains(newPosition) && !PlaceIsOccupied(newPosition);
+            return Bounds.Contains(newPosition) && !PlaceIsOccupiedAndSolid(newPosition);
         }
 
-        public bool PlaceIsOccupied(Position position)
+        public bool PlaceIsOccupiedAndSolid(Position position)
         {
-            return Children.Any(c => c.RenderPosition == position);
+            return Children.Any(c => c.RenderPosition == position && c.solid);
         }
     }
 }
