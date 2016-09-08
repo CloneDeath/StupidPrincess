@@ -1,4 +1,5 @@
-﻿using StupidPrincess.Renderables;
+﻿using StupidPrincess.Game.MainGame.Entities;
+using StupidPrincess.Renderables;
 
 namespace StupidPrincess.Game.MainGame.MazeLoading
 {

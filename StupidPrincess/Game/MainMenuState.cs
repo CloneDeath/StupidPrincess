@@ -16,8 +16,10 @@ namespace StupidPrincess.Game
             _controls = controls;
             _stateManager = stateManager;
             Children = new IRenderable[] {
-                new TextComponent("Stupid Princess!", new Position(1, 1)), 
-                new TextComponent("[Press Any Key to Begin!]", new Position(1, 3)) {
+                new TextComponent("Stupid Princess!", new Position(1, 1)) {RenderedColor = ConsoleColor.Magenta},
+                new TextComponent("Controls:", new Position(1 + 4, 3)),
+                new TextComponent("Arrow Keys - Move Cursor", new Position(1 + 4*2, 4)),
+                new TextComponent("[Press Any Key to Begin!]", new Position(1, 6)) {
                     RenderedColor = ConsoleColor.Yellow
                 },
             };
@@ -27,7 +29,7 @@ namespace StupidPrincess.Game
 
         public void Update(TimeSpan deltaTime) {
             if (_controls.AnyKeyPressed) {
-                _stateManager.SetState(new Level01());
+                _stateManager.SetState(new Level01(_controls));
             }
         }
     }
