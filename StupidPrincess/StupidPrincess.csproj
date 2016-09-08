@@ -52,6 +52,7 @@
     <Compile Include="Game\MainGame\MazeLoading\EntityLegend.cs" />
     <Compile Include="Game\MainGame\MazeLoading\FileStack.cs" />
     <Compile Include="Game\MainGame\MazeLoading\MazeLoader.cs" />
+    <Compile Include="Game\MainGame\StatusBar.cs" />
     <Compile Include="Renderables\Rectangle.cs" />
     <Compile Include="Game\MainMenuState.cs" />
     <Compile Include="Game\MainGame\Entities\Door.cs" />
