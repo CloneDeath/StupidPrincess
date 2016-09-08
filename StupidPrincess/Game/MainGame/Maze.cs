@@ -15,6 +15,8 @@ namespace StupidPrincess.Game.MainGame
             _size = size;
         }
 
+        public override Position RenderPosition => new Position(0, 2);
+
         public void AddEntity(IEntity entity) {
             _entities.Add(entity);
         }

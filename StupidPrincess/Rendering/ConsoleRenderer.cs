@@ -20,7 +20,7 @@ namespace StupidPrincess.Rendering
 
         public void Render(IRenderable target) {
             var newScreen = new Screen(_windowSize);
-            RenderTargetAndChildren(target, newScreen);
+            RenderTargetAndChildren(target, newScreen, new Position(0, 0));
 
             var delta = newScreen.GetDifferences(_previousScreen);
             _previousScreen = newScreen;
@@ -40,18 +40,18 @@ namespace StupidPrincess.Rendering
             }
         }
 
-        private void RenderTargetAndChildren(IRenderable target, Screen screen) {
+        private void RenderTargetAndChildren(IRenderable target, Screen screen, Position offset) {
             foreach (var child in target.Children) {
-                RenderTargetAndChildren(child, screen);
+                RenderTargetAndChildren(child, screen, offset + target.RenderPosition);
             }
-            RenderToScreen(target, screen);
+            RenderToScreen(target, screen, offset);
         }
 
-        private static void RenderToScreen(IRenderable target, Screen screen) {
+        private static void RenderToScreen(IRenderable target, Screen screen, Position offset) {
             if (string.IsNullOrEmpty(target.RenderedText)) return;
 
             for (var i = 0; i < target.RenderedText.Length; i++) {
-                screen.Set(target.RenderPosition + new Position(i, 0), 
+                screen.Set(target.RenderPosition + offset + new Position(i, 0), 
                     new Glyph(target.RenderedText[i],
                               target.RenderedColor,
                               target.BackgroundColor));
