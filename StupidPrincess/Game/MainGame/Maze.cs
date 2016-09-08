@@ -35,7 +35,7 @@ namespace StupidPrincess.Game.MainGame
 
         public bool PlaceIsOccupiedAndSolid(Position position)
         {
-            return Children.Any(c => c.RenderPosition == position && c.solid);
+            return _entities.Any(c => c.RenderPosition == position && c.Solid);
         }
     }
 }

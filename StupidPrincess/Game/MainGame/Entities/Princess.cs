@@ -23,7 +23,7 @@ namespace StupidPrincess.Game.MainGame.Entities
         public Position RenderPosition => _position;
         public IEnumerable<IRenderable> Children => new IRenderable[0];
 
-        public bool solid => false;
+        public bool Solid => false;
 
         private TimeSpan _timeUntilUpdate = TimeSpan.Zero;
         private static readonly TimeSpan _updatePeriod = TimeSpan.FromSeconds(.25);

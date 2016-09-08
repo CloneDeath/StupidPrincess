@@ -15,14 +15,9 @@ namespace StupidPrincess.Game.MainGame.Entities
         public virtual ConsoleColor BackgroundColor => ConsoleColor.Black;
         public Position RenderPosition { get; }
         public IEnumerable<IRenderable> Children => new IRenderable[0];
-        public virtual bool solid => true;
 
         public void Update(TimeSpan deltaTime) { }
 
-        public bool IsSolid()
-        {
-            return solid;
-
-        }
+        public virtual bool Solid => false;
     }
 }

@@ -1,5 +1,4 @@
 ﻿using StupidPrincess.Game;
-using StupidPrincess.Renderables;
 using StupidPrincess.Rendering;
 
 namespace StupidPrincess

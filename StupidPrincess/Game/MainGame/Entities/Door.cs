@@ -10,5 +10,6 @@ namespace StupidPrincess.Game.MainGame.Entities
         public override ConsoleColor RenderedColor => Color.ConsoleColor;
 
         public LockColor Color { get; set; }
+        public override bool Solid => true;
     }
 }
